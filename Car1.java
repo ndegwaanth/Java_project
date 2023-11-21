@@ -1,10 +1,10 @@
 import javax.swing.*;
-import java.util.ArrayList;
 import java.awt.*;
-import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import java.io.File;
 
-// CREATE A FRAME FOR THE USER GUI
 public class Car1 extends JFrame {
     private ArrayList<Car> cars = new ArrayList<>();
     private JComboBox<String> carModelDropdown;
@@ -20,7 +20,7 @@ public class Car1 extends JFrame {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setSize(600, 400);
 
-        carModelDropdown = new JComboBox<>(new String[]{"JAGUAR", "FORD", " PAGANI","PORSCHE","SUBARU", "Toyota", "Mazda", "Mitsubishi", "Lexus", "ISUZU", "Honda", "Mercedes"});
+        carModelDropdown = new JComboBox<>(new String[]{"JAGUAR", "FORD", "PAGANI", "PORSCHE", "SUBARU", "Toyota", "Mazda", "Mitsubishi", "Lexus", "ISUZU", "Honda", "Mercedes"});
         carNameField = new JTextField(15);
         carOwnerField = new JTextField(15);
         carPriceField = new JTextField(15);
@@ -72,7 +72,7 @@ public class Car1 extends JFrame {
         userEntryPanel.setBackground(Color.ORANGE);
         userEntryPanel.setLayout(new FlowLayout());
         userEntryPanel.add(addCarButton);
-        userEntryPanel.add(carImageLabel);  // Add the JLabel for displaying the car image
+        userEntryPanel.add(carImageLabel);
         return userEntryPanel;
     }
 
@@ -89,22 +89,22 @@ public class Car1 extends JFrame {
         String owner = carOwnerField.getText();
         String price = carPriceField.getText();
 
-        // Restricting the car price to integer data type only
-        try{
+        // Validate that car price is a valid integer
+        try {
             Integer.parseInt(price);
-        }
-        catch (NumberFormatException e) {
-            JOptionPane.showMessageDialog(this, "Error: Car price can only contain didgits between 0 - 9", "Error", JOptionPane.ERROR_MESSAGE);
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(this, "Error: Car price must be a valid integer.", "Error", JOptionPane.ERROR_MESSAGE);
             return;
         }
 
-        if (model.isEmpty() || name.isEmpty() || owner.isEmpty() || price.isEmpty()) {
+        // Validate that car owner and name are non-empty strings
+        if (model.isEmpty() || name.isEmpty() || owner.isEmpty()) {
             JOptionPane.showMessageDialog(this, "Error: Please fill all the required fields.", "Error", JOptionPane.ERROR_MESSAGE);
             return;
         }
 
-// Here is the section for getting the Selected car image path
-        ImageIcon placeholderIcon = new ImageIcon(new ImageIcon("C:\\Users\\Son Of Nations\\Downloads\\Project photos").getImage().getScaledInstance(100, 100, Image.SCALE_DEFAULT));
+        // Update the path to use a relative path for the image
+        ImageIcon placeholderIcon = new ImageIcon(new ImageIcon("jk.jpg").getImage().getScaledInstance(100, 100, Image.SCALE_DEFAULT));
 
         Car car = new Car(model, name, owner, price);
         cars.add(car);
@@ -115,19 +115,19 @@ public class Car1 extends JFrame {
     private void updateCarInfoDisplay() {
         carDataDisplay.setText("Car Information:\n");
         for (Car car : cars) {
-            carDataDisplay.append("Model: \n" + car.getCarModel()  + ", Name:\n " + car.getCarName() +
-                    ", Owner: \n" + car.getCarOwner() + ", Price: \n" + car.getCarPrice() + "\n");
+            carDataDisplay.append("Model: " + car.getCarModel() + "\n" + " Name: " + car.getCarName() + "\n" +
+                    " Owner: " + car.getCarOwner() + "\n" + " Price: " + car.getCarPrice() + "\n\n");
         }
     }
-// update the car image display
+
     private void updateCarImageDisplay(ImageIcon icon) {
         carImageLabel.setIcon(icon);
     }
 
     private void updateCarImageDisplay() {
-        // Implement the logic to update the car image based on the selected car model
+        // Implement the code to update the car image based on the selected car model
 
-        ImageIcon placeholderIcon = new ImageIcon(new ImageIcon("C:\\Users\\Son Of Nations\\Downloads\\Project photos").getImage().getScaledInstance(100, 100, Image.SCALE_DEFAULT));
+        ImageIcon placeholderIcon = new ImageIcon(new ImageIcon("my.jpeg").getImage().getScaledInstance(300, 300, Image.SCALE_DEFAULT));
         updateCarImageDisplay(placeholderIcon);
     }
 
