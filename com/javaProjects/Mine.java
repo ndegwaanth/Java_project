@@ -5,9 +5,9 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Objects;
 
-public class JavaProject extends JFrame
+public class Mine extends JFrame
 {
-    JavaProject()
+    Mine()
     {
         JFrame f = new JFrame("first");
         f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -193,6 +193,6 @@ public class JavaProject extends JFrame
         }
     }
     public static void main(String[] args) {
-        SwingUtilities.invokeLater(() -> new JavaProject());
+        SwingUtilities.invokeLater(() -> new Mine());
     }
 }
