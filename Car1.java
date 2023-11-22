@@ -38,7 +38,7 @@ public class Car1 extends JFrame {
         setLayout(new BorderLayout());
         add(createUserDetailsPanel(), BorderLayout.NORTH);
         add(createUserEntryPanel(), BorderLayout.CENTER);
-        add(createOutputPanel(), BorderLayout.SOUTH);
+        add(createOutputPanel(), BorderLayout.WEST);
 
         setLocationRelativeTo(null);
         setVisible(true);
@@ -106,21 +106,49 @@ public class Car1 extends JFrame {
 
     // Using the switch and case statements to get the image paths for the images
     private ImageIcon getCarImageForModel(String model) {
-        // Add more cases for other car models
+        String name = (String) carNameDropdown.getSelectedItem();
+        // gettig the images of the selected
         switch (model) {
             case "Toyota":
-                return new ImageIcon("alphard.jfif");
-            case "Ford":
-                return new ImageIcon("ford.jfif");
-            case "Subaru":
-                return new ImageIcon("subaru.jfif");
-            case "Lexus":
-                return new ImageIcon("lx.jfif");
-            case "Mercedes":
-                return new ImageIcon("merc.jfif");
-            case "Honda":
+                if ("Corolla".equals(name)){
+                    return new ImageIcon("alphard.jfif");
+                } else if ("Harrier".equals(name)) {
+                    return new ImageIcon("J.jpeg");
+                } else if ("Vitz".equals(name)) {
 
-                return new ImageIcon("honda.jfif");
+                }
+            case "Ford":
+                if ("Mustang".equals(name)){
+                    return new ImageIcon("J.jpeg");
+                }
+            case "Subaru":
+                if ("Legacy".equals(name)){
+                    return new ImageIcon("subaru.jfif");
+                }
+                if ("Outback".equals(name)){
+                    return new ImageIcon("myimage.jpg");
+                }
+            case "Lexus":
+                if ("Lx570".equals(name)){
+                    return new ImageIcon("prado.jpg");
+                }
+                if ("Lx680".equals(name)){
+                    return new ImageIcon("lx.jfif");
+                }
+            case "Mercedes":
+                if ("E class".equals(name)){
+                    return new ImageIcon("myH.jpg");
+                }
+                if ("Gwagon".equals(name)){
+                    return new ImageIcon("i.jpeg");
+                }
+            case "Honda":
+                if ("Civic".equals(name)){
+                    return new ImageIcon("civic.jpeg");
+                }
+                if ("Accord".equals(name)){
+                    return new ImageIcon("myimage.jpg");
+                }
             default:
                 return new ImageIcon("alphard.jfif");
         }
@@ -167,8 +195,8 @@ public class Car1 extends JFrame {
             carNameDropdown.addItem("E class");
             carNameDropdown.addItem("Gwagon");
         } else if ("Lexus".equals(inputSelected)) {
-            carNameDropdown.addItem("Lx 570");
-            carNameDropdown.addItem("Lx 680");
+            carNameDropdown.addItem("Lx570");
+            carNameDropdown.addItem("Lx680");
         } else if ("Ford".equals(inputSelected)) {
             carNameDropdown.addItem("Mustang");
             carNameDropdown.addItem("Double Cabin");
